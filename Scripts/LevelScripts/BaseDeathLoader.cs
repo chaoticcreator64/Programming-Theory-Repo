@@ -8,15 +8,15 @@ public class BaseDeathLoader : MonoBehaviour
     public LifeCounter lifeCounter;
     public bool dead;
     public bool gameIsOver;
-    public AudioSource audioSource;
-    public AudioClip deathSound;
+    
+    public GameObject deathSound;
+    public GameObject gameOverSound;
     public float volume;
     public float playerNum;
 
     // Start is called before the first frame update
     public virtual void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
+    {        
         dead = false;
         gameIsOver = false;
     }
@@ -24,8 +24,7 @@ public class BaseDeathLoader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerNum = GameObject.FindGameObjectsWithTag("Player").Length;
-        lifeCounter = GameObject.Find("LifeCounter").GetComponent<LifeCounter>();
+        playerNum = GameObject.FindGameObjectsWithTag("Player").Length;        
         if (playerNum == 0)
         {
             dead = true;
@@ -36,13 +35,11 @@ public class BaseDeathLoader : MonoBehaviour
     public virtual void UponDeath()
     {
         if (lifeCounter.lives > 0 && dead == true)
-        {
-            audioSource.PlayOneShot(deathSound);
+        {            
             StartCoroutine(RestartMission());
         }
         if (lifeCounter.lives <= 0 && dead == true)
-        {
-            audioSource.PlayOneShot(lifeCounter.gameOverSound);
+        {            
             StartCoroutine(GameIsOver());
         }        
     }

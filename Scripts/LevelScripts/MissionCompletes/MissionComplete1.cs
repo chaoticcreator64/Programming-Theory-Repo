@@ -5,10 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MissionComplete : MonoBehaviour
 {
-    public AudioSource audioSource;
-    public AudioClip missionComplete;
+    public GameObject completeRound;    
     public bool levelComplete;
-
     public BeginingLevel beginingLevel;
 
     // Start is called before the first frame update
@@ -21,10 +19,9 @@ public class MissionComplete : MonoBehaviour
     public virtual void Update()
     {
         if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
-        {            
-            audioSource.PlayOneShot(missionComplete);
-            StartCoroutine(LoadNewMission());
-            Destroy(beginingLevel.beginAudio);
+        {
+            Instantiate(completeRound, transform.position, transform.rotation);
+            StartCoroutine(LoadNewMission());            
         }
     }
 

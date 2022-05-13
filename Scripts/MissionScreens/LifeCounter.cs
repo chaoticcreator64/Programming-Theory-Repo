@@ -20,7 +20,8 @@ public class LifeCounter : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {        
+    {
+        DontDestroyOnLoad(gameObject);
         audioSource = GameObject.Find("GameManager").GetComponent<AudioSource>();
 
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2)|| SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(4)
@@ -35,8 +36,7 @@ public class LifeCounter : MonoBehaviour
             if (baseDeathLoader.dead == true)
             {
                 StartCoroutine(LifeDecrease());
-            }
-            DontDestroyOnLoad(gameObject);
+            }            
         }
         else
         {

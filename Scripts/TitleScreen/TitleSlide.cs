@@ -22,9 +22,9 @@ public class TitleSlide : MonoBehaviour
         {
             transform.Translate(Vector3.right * 1000 * Time.deltaTime);            
         }
-        if (transform.position.x > 402)
+        if (transform.position.x > 481)
         {
-            transform.position = new Vector3(402, transform.position.y, transform.position.z);
+            transform.position = new Vector3(481, transform.position.y, transform.position.z);
             titleSliding = false;
         }
     }

@@ -9,7 +9,7 @@ public class LevelOneDeathLoader : BaseDeathLoader
     void Update()
     {
         playerNum = GameObject.FindGameObjectsWithTag("Player").Length;
-        lifeCounter = GameObject.Find("LifeCounter").GetComponent<LifeCounter>();
+        lifeCounter = GameObject.FindGameObjectWithTag("LifeCounter").GetComponent<LifeCounter>();
         if (playerNum == 0)
         {
             dead = true;
@@ -21,19 +21,20 @@ public class LevelOneDeathLoader : BaseDeathLoader
     {
         if (lifeCounter.lives > 0 && dead == true)
         {
-            audioSource.PlayOneShot(deathSound);
+            Instantiate(deathSound, transform.position, transform.rotation);
             StartCoroutine(RestartMission());
         }
         if (lifeCounter.lives <= 0 && dead == true)
         {
-            audioSource.PlayOneShot(lifeCounter.gameOverSound);
+            Instantiate(gameOverSound, transform.position, transform.rotation);
             StartCoroutine(GameIsOver());
         }
     }
 
     IEnumerator RestartMission()
-    {
+    {        
         yield return new WaitForSeconds(2);
+        lifeCounter.lives = lifeCounter.lives - 1;
         SceneManager.LoadScene(1);
 
     }

@@ -10,7 +10,7 @@ public class Complete2 : MissionComplete
     {
         if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
-            audioSource.PlayOneShot(missionComplete);
+            Instantiate(completeRound, transform.position, transform.rotation);
             StartCoroutine(LoadNewMission());
             Destroy(beginingLevel.beginAudio);
         }
