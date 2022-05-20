@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyTanks : MonoBehaviour
 {
+
     public NavMeshAgent agent;
 
     public Transform player;
@@ -29,12 +30,14 @@ public class EnemyTanks : MonoBehaviour
     public float moveSpeed = 2f;
     public bool firingLimit;
 
+    
+
 
     //States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         player = GameObject.Find("PlayerTank").transform;
         agent = GetComponent<NavMeshAgent>();
@@ -45,12 +48,31 @@ public class EnemyTanks : MonoBehaviour
     {
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-        
+                
         if (!playerInSightRange && !playerInAttackRange) Patrolling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInSightRange && playerInAttackRange) AttackPlayer();        
+        if (playerInSightRange && playerInAttackRange) AttackPlayer();
         
-    }
+        RaycastHit hit;
+        if (Physics.Linecast(transform.position, player.transform.position, out hit) && playerInAttackRange)
+        {
+            if (hit.collider.CompareTag("Wall") || hit.collider.CompareTag("BWall"))
+            {
+                attackState = false;
+            }
+            else if(hit.collider.CompareTag("Holes"))
+            {
+                attackState = true;
+                AttackPlayer();
+            }
+            else
+            {
+                attackState = true;
+                AttackPlayer();
+            }
+        }
+    }   
+
 
     void Patrolling()
     {
@@ -74,7 +96,7 @@ public class EnemyTanks : MonoBehaviour
         if (Physics.Raycast(walkPoint, - transform.up, 2f, whatIsGround))
         {
             walkPointSet = true;
-        }       
+        }        
     }
 
 
@@ -84,15 +106,16 @@ public class EnemyTanks : MonoBehaviour
     }
 
     void AttackPlayer()
-    {
-        agent.SetDestination(transform.position + walkPoint);
-        mount.transform.LookAt(player.transform.position);
-        if(!alreadyAttacked)
+    {        
+        
+        if (!alreadyAttacked && attackState == true)
         {
+            agent.SetDestination(transform.position);
+            mount.transform.LookAt(player.transform.position);
             if(firingLimit == false)
             {
-                Rigidbody instance = Instantiate(bullet, firingPosition.transform.position, firingPosition.transform.rotation);
-                Vector3 fwd = firingPosition.transform.TransformDirection(Vector3.forward);
+                Rigidbody instance = Instantiate(bullet, firingPosition.transform.position, mount.transform.rotation);
+                Vector3 fwd = mount.transform.TransformDirection(Vector3.forward);
                 instance.AddForce(fwd * power);
             }
             
@@ -100,6 +123,8 @@ public class EnemyTanks : MonoBehaviour
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
+
+    
 
     private void OnDrawGizmosSelected()
     {
@@ -109,9 +134,9 @@ public class EnemyTanks : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, sightRange);
     }
 
+    
     void ResetAttack()
     {
         alreadyAttacked = false;
     }
-
 }

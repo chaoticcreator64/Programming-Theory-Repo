@@ -7,13 +7,14 @@ using UnityEngine.UI;
 public class ToInfoSection : MonoBehaviour
 {
     public GameObject titleText;
-    public Button startButton;    
+    public Button startButton1;
+    public GameObject startButton2;
 
     // Start is called before the first frame update
     void Start()
     {
-        startButton.GetComponent<Button>();
-        startButton.onClick.AddListener(BeginGame);
+        startButton1.GetComponent<Button>();
+        startButton1.onClick.AddListener(BeginGame);
     }
 
     // Update is called once per frame
@@ -26,6 +27,7 @@ public class ToInfoSection : MonoBehaviour
     {
         titleText.SetActive(false);
         gameObject.SetActive(false);
+        startButton2.gameObject.SetActive(false);
         SceneManager.LoadScene(1);
     }
 }

@@ -40,7 +40,6 @@ public class TitleButtonSlide : MonoBehaviour
     IEnumerator ButtonSliding()
     {
         yield return new WaitForSeconds(2f);
-        titleButtonSliding = true;
-        
+        titleButtonSliding = true;        
     }
 }
