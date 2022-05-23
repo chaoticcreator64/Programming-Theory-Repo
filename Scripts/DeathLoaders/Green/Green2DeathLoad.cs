@@ -14,9 +14,9 @@ public class Green2DeathLoad : BaseDeathLoader
         playerNum = GameObject.FindGameObjectsWithTag("Player").Length;
         lifeCounter = GameObject.FindGameObjectWithTag("LifeCounter").GetComponent<LifeCounter>();
 
-        if (dead == true)
+        if (playerNum == 0)
         {
-            
+            dead = true;
             UponDeath();
         }
     }
