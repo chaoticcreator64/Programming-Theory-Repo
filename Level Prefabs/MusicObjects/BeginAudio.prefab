@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5813393773366977265
+--- !u!1 &6434407477770350859
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6727492837133324772}
-  - component: {fileID: 8879420312202125933}
+  - component: {fileID: 6105212327983759902}
+  - component: {fileID: 8276702343998599575}
   m_Layer: 0
-  m_Name: BeginAudio1
+  m_Name: BeginAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6727492837133324772
+--- !u!4 &6105212327983759902
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5813393773366977265}
+  m_GameObject: {fileID: 6434407477770350859}
   m_LocalRotation: {x: 0.5092046, y: -0, z: -0, w: 0.86064553}
   m_LocalPosition: {x: 0, y: 19.38, z: -6.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,13 +32,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &8879420312202125933
+--- !u!82 &8276702343998599575
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5813393773366977265}
+  m_GameObject: {fileID: 6434407477770350859}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}

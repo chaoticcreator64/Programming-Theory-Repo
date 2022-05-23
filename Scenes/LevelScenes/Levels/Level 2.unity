@@ -1118,6 +1118,7 @@ MonoBehaviour:
   beginingLevel: {fileID: 1235676624}
   dontInstantiate: 0
   beginAudio: {fileID: 926793675}
+  baseDeathLoad: {fileID: 1128586863}
 --- !u!1 &1214929677 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8957231676852318228, guid: 83b545c1565204a44a4a73bca9ee7cae, type: 3}
@@ -1814,6 +1815,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 125343702}
     m_Modifications:
+    - target: {fileID: 788126425852749404, guid: 7333202e078de6c44af8b1a8f70a942b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 359
+      objectReference: {fileID: 0}
+    - target: {fileID: 3901455266393173946, guid: 7333202e078de6c44af8b1a8f70a942b, type: 3}
+      propertyPath: m_text
+      value: x
+      objectReference: {fileID: 0}
     - target: {fileID: 7545536783491015783, guid: 7333202e078de6c44af8b1a8f70a942b, type: 3}
       propertyPath: m_Name
       value: LifeTracker

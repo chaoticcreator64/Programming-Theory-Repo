@@ -7,11 +7,12 @@ public class Green4Complete : MissionComplete
 {
     public bool dontInstantiate;
     public GameObject beginAudio;
+    public BaseDeathLoader baseDeathLoad;
 
     // Update is called once per frame
     public override void Update()
     {
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0 && baseDeathLoad.playerNum >= 1)
         {
 
             StartCoroutine(LoadNewMission());
