@@ -45,6 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseDeathLoader: {fileID: 0}
-  lives: 0
-  audioSource: {fileID: 0}
-  gameOverSound: {fileID: 8300000, guid: 9bb5ab790d9e6f847a56d177bed14286, type: 3}
+  lives: 3
+  thisObject: {fileID: 8038941394372104350}
